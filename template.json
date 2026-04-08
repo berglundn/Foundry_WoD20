@@ -1714,6 +1714,7 @@
 			],
 			"ismeleeweapon": false,
 			"israngedeweapon": false,
+			"israngedweapon": false,
 			"ispower": false,
 			"isrollable": false,
 			"isfavorited": false,

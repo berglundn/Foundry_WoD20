@@ -413,7 +413,7 @@ export class WoDActor extends Actor {
 
                 if (data.type == "PC") {
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;
+                    updates["system.settings.version"] = game.system.version;
                     updates["system.settings.era"] = CONFIG.worldofdarkness.era[CONFIG.worldofdarkness.defaultMortalEra];
 
                     console.log(`Create PC`);
@@ -424,7 +424,7 @@ export class WoDActor extends Actor {
                     updates = await CreateHelper.SetAbilitiesv2(updates, this, "mortal", CONFIG.worldofdarkness.defaultMortalEra);
 
                     updates["system.settings.iscreated"] = true;		
-                    updates["system.settings.version"] = game.data.system.version;
+                    updates["system.settings.version"] = game.system.version;
                     updates["system.settings.era"] = CONFIG.worldofdarkness.era[CONFIG.worldofdarkness.defaultMortalEra];
 
                     // Create items
@@ -439,14 +439,14 @@ export class WoDActor extends Actor {
                     updates = await CreateHelper.SetWerewolfAttributesv2(updates, this);
 
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;
+                    updates["system.settings.version"] = game.system.version;
                     updates["system.settings.era"] = CONFIG.worldofdarkness.era[CONFIG.worldofdarkness.defaultWerewolfEra];
                     updates["system.settings.variant"] = "general";
                     updates["system.settings.isshapecreated"] = true;
 
                     // Create items
                     await CreateHelper.SetWerewolfAbilities(this, CONFIG.worldofdarkness.defaultWerewolfEra);
-                    await CreateHelper.CreateShape(this, game.data.system.version);
+                    await CreateHelper.CreateShape(this, game.system.version);
 
                     console.log(`Creating ${CONFIG.worldofdarkness.sheettype.werewolf}`);
                 }
@@ -457,7 +457,7 @@ export class WoDActor extends Actor {
                     updates = await CreateHelper.SetVampireAttributesv2(updates, this);                    
 
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;
+                    updates["system.settings.version"] = game.system.version;
                     updates["system.settings.era"] = CONFIG.worldofdarkness.era[CONFIG.worldofdarkness.defaultVampireEra];
 
                     // Create items
@@ -472,7 +472,7 @@ export class WoDActor extends Actor {
                     updates = await CreateHelper.SetMageAttributesv2(updates, this);
 
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;
+                    updates["system.settings.version"] = game.system.version;
                     updates["system.settings.era"] = CONFIG.worldofdarkness.era[CONFIG.worldofdarkness.defaultMageEra];
                     updates["system.settings.variant"] = "general";                    
             
@@ -485,7 +485,7 @@ export class WoDActor extends Actor {
                     updates = await CreateHelper.SetChangelingAttributesv2(updates, this);
 
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;
+                    updates["system.settings.version"] = game.system.version;
                     updates["system.settings.era"] = CONFIG.worldofdarkness.era["modern"];
                     updates["system.settings.variant"] = "general";
 
@@ -501,7 +501,7 @@ export class WoDActor extends Actor {
                     updates = await CreateHelper.SetHunterAttributesv2(updates, this);	
 
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;
+                    updates["system.settings.version"] = game.system.version;
                     updates["system.settings.variant"] = "general";                    
 
                     console.log(`Creating ${CONFIG.worldofdarkness.sheettype.hunter}`);
@@ -513,7 +513,7 @@ export class WoDActor extends Actor {
                     updates = await CreateHelper.SetDemonAttributesv2(updates, this);	
 
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;
+                    updates["system.settings.version"] = game.system.version;
                     updates["system.settings.variant"] = "general";                    
 
                     // Create items
@@ -528,7 +528,7 @@ export class WoDActor extends Actor {
                     updates = await CreateHelper.SetMummyAttributesv2(updates, this);
 
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;	
+                    updates["system.settings.version"] = game.system.version;	
                     updates["system.settings.variant"] = "general";
             
                     console.log(`Creating ${CONFIG.worldofdarkness.sheettype.mummy}`);
@@ -540,7 +540,7 @@ export class WoDActor extends Actor {
                     updates = await CreateHelper.SetWraithAttributesv2(updates, this);	
 
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;                   
+                    updates["system.settings.version"] = game.system.version;                   
 
                     console.log(`Creating ${CONFIG.worldofdarkness.sheettype.wraith}`);
                 }
@@ -552,7 +552,7 @@ export class WoDActor extends Actor {
                     updates = await CreateHelper.SetWerewolfAttributesv2(updates, this);
 
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;                    
+                    updates["system.settings.version"] = game.system.version;                    
 
                     console.log(`Creating ${CONFIG.worldofdarkness.sheettype.changingbreed}`);
                 }
@@ -565,7 +565,7 @@ export class WoDActor extends Actor {
                     // Note: _keepSheetValuesCorrect still uses data, needs to be handled separately if needed
 
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;	                    
+                    updates["system.settings.version"] = game.system.version;	                    
             
                     console.log(`Creating ${CONFIG.worldofdarkness.sheettype.exalted}`);
                 }
@@ -576,7 +576,7 @@ export class WoDActor extends Actor {
                     updates = await CreateHelper.SetCreatureAbilitiesv2(updates, this);
 
                     updates["system.settings.iscreated"] = true;
-                    updates["system.settings.version"] = game.data.system.version;
+                    updates["system.settings.version"] = game.system.version;
 
                     console.log(`Creating ${CONFIG.worldofdarkness.sheettype.creature}`);
                 }	

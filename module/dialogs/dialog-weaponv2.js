@@ -276,11 +276,14 @@ export class DialogWeaponV2 extends HandlebarsApplicationMixin(ApplicationV2) {
             data.actorData.type = this.actor.system.settings.game;
             data.object.sheettype = (data.actorData.type || "").toLowerCase() + "Dialog";
             const abilities = Object.values(this.actor.system.abilities ?? {});
+
+            console.log(abilities);
+
             data.config.meleeAbilities = (abilities
                 .filter((a) => a.type === "Ability" && a.system?.settings?.isvisible && a.system?.settings?.ismeleeweapon))
                 .sort((a, b) => game.i18n.localize(a.system?.label || "").localeCompare(game.i18n.localize(b.system?.label || "")));
             data.config.rangedAbilities = (abilities
-                .filter((a) => a.type === "Ability" && a.system?.settings?.isvisible && a.system?.settings?.israngedweapon))
+                .filter((a) => a.type === "Ability" && a.system?.settings?.isvisible && a.system?.settings?.israngedeweapon))
                 .sort((a, b) => game.i18n.localize(a.system?.label || "").localeCompare(game.i18n.localize(b.system?.label || "")));
         } 
         else {
@@ -334,6 +337,17 @@ export class DialogWeaponV2 extends HandlebarsApplicationMixin(ApplicationV2) {
                     abilitySpeciality = abilityItem.system.speciality || "";
                 }
             }
+            else if (data.object.dice2 === "custom" && data.object.secondaryabilityid) {
+                const secItem = await this.actor.getEmbeddedDocument("Item", data.object.secondaryabilityid);
+                if (secItem) {
+                    data.object.abilityValue = parseInt(secItem.system.value) || 0;
+                    data.object.abilityName = secItem.system.label || "";
+                    if (parseInt(secItem.system.value) >= parseInt(CONFIG.worldofdarkness.specialityLevel)) {
+                        data.object.hasSpeciality = true;
+                        abilitySpeciality = secItem.system.speciality || "";
+                    }
+                }
+            }
         } 
         else if (this.actor.system?.abilities && data.actorData.abilities?.[data.object.dice2]?.value != null) {
             data.object.abilityValue = parseInt(data.actorData.abilities[data.object.dice2].value) || 0;
@@ -385,13 +399,14 @@ export class DialogWeaponV2 extends HandlebarsApplicationMixin(ApplicationV2) {
         weaponRoll.action = `${o.name} (${game.i18n.localize("wod.dialog.weapon.attack")})`;
         const template = [`${o.attributeName} (${o.attributeValue})`];
 
-        if (o.abilityName) template.push(`${o.abilityName} (${o.abilityValue})`);
+        if (o.abilityName) template.push(`${game.i18n.localize(o.abilityName)} (${o.abilityValue})`);
         if (o.modename === "burst") weaponRoll.extraInfo.push(game.i18n.localize("wod.dialog.weapon.usingburst"));
         if (o.modename === "fullauto") weaponRoll.extraInfo.push(game.i18n.localize("wod.dialog.weapon.usingauto"));
         if (o.modename === "spray") weaponRoll.extraInfo.push(game.i18n.localize("wod.dialog.weapon.usingspray"));
 
         let numDices = parseInt(o.attributeValue) + parseInt(o.abilityValue) + parseInt(o.bonus);
         let difficulty = o.difficulty;
+
         if (await BonusHelper.CheckAttackDiff(this.actor, o.weaponType)) {
             const mod = await BonusHelper.GetAttackDiff(this.actor, o.weaponType);
             difficulty += mod;
@@ -416,7 +431,6 @@ export class DialogWeaponV2 extends HandlebarsApplicationMixin(ApplicationV2) {
         const item = await this.actor.getEmbeddedDocument("Item", o._id);
 
         if (!item) {
-            //console.log("WoD DEBUG | Item " + o._id + " not found on actor " + this.actor.name +" existing attack roll");
             return;
         }
         if (o.dice2 === "custom" && o.secondaryabilityid) {
@@ -428,19 +442,7 @@ export class DialogWeaponV2 extends HandlebarsApplicationMixin(ApplicationV2) {
         const numberOfSuccesses = await DiceRoller(weaponRoll);
         const damageRollable = item.system?.damage?.isrollable !== false;
 
-        //console.log("WoD DEBUG | Attack roll resulted in", numberOfSuccesses, "successes");
-
-        if (damageRollable === true) {
-            //console.log("WoD DEBUG | Damage roll is set to be rolled after successful attack");
-        }
-        else {
-            //console.log("WoD DEBUG | Damage roll is not set to be rolled after successful attack");
-            //console.log("WoD DEBUG | Damage rollable value:", damageRollable);
-        }
-
         if (numberOfSuccesses > 0 && damageRollable) {
-            //console.log("WoD DEBUG | Damage roll to be rolled");
-
             this.weaponState = "damage";
             this.attackResult = {
                 extraSuccesses: numberOfSuccesses - 1,
@@ -449,9 +451,9 @@ export class DialogWeaponV2 extends HandlebarsApplicationMixin(ApplicationV2) {
             };
             this.object = buildViewModel(this.item, this.weaponState, this.attackResult);
             await this.render();
-        } else {
-            //console.log("WoD DEBUG | No damage roll to be rolled");
-            this.close();
+        } 
+        else {
+                this.close();
         }
     }
 
@@ -481,8 +483,6 @@ export class DialogWeaponV2 extends HandlebarsApplicationMixin(ApplicationV2) {
         weaponRoll.systemText = "";
 
         if ((o.numberoftargets > 1) && (o.modename === "spray")) {
-            //console.log("WoD DEBUG | Spray attack with", o.numberoftargets, "targets");
-
             let numberTargets = o.numberoftargets;
             const maxnumberTargets = parseInt(o.extraSuccesses) + 1;
             if (numberTargets > maxnumberTargets) numberTargets = maxnumberTargets;
@@ -507,9 +507,7 @@ export class DialogWeaponV2 extends HandlebarsApplicationMixin(ApplicationV2) {
             await DiceRoller(weaponRoll);
         } 
         else {
-            //console.log("WoD DEBUG | Damage roll with", o.attributeValue, "attribute dice,", o.abilityValue, "ability dice,", o.bonus, "bonus, and", o.extraSuccesses, "extra successes");
-
-            const numDices = parseInt(o.attributeValue) + parseInt(o.abilityValue) + parseInt(o.bonus) + parseInt(o.extraSuccesses);
+            const numDices = parseInt(o.attributeValue) + parseInt(o.abilityValue) + parseInt(o.bonus) + parseInt(o.extraSuccesses) + (parseInt(o.dodgebonus) || 0);
             weaponRoll.numDices = numDices;
             weaponRoll.difficulty = parseInt(o.difficulty) || 6;
             weaponRoll.bonus = parseInt(o.bonus) + parseInt(o.dodgebonus);

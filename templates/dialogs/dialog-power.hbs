@@ -38,9 +38,13 @@
                     {{#if (eq config.powerAbilities.length 0)}}
                         {{localize "wod.dialog.power.nopower"}}
                     {{/if}}
+                    {{#if (gt config.powerAbilities.length 0)}}
+                    <div class="dialog-secondaryability-buttons">
                     {{#each config.powerAbilities as |ability key|}}
                         <button id="secondaryability" class="button fullSplatColor pointer dialog-secondaryability-button {{#if (eq ../object.secondaryabilityid ability._id)}}active{{/if}}" value="{{ability._id}}">{{ability.name}}</button>
                     {{/each}}
+                    </div>
+                    {{/if}}
                 </div>
             </div>
         {{/if}}

@@ -584,7 +584,7 @@ export default class MortalActorSheet extends foundry.appv1.sheets.ActorSheet {
 
 		actorData.system.settings.isupdated = false;		
         await this.actor.update(actorData);
-		await CreateHelper.SetVariantItems(this.actor, dataset.value, game.data.system.version);
+		await CreateHelper.SetVariantItems(this.actor, dataset.value, game.system.version);
 	}
 
 	async _onsheetChange(event) {
@@ -1281,9 +1281,8 @@ export default class MortalActorSheet extends foundry.appv1.sheets.ActorSheet {
 		const chatData = {
 			content: html,
 			speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-			rollMode: game.settings.get("core", "rollMode")        
 		};
-		ChatMessage.applyRollMode(chatData, "roll");
+		ChatMessage.applyMode(chatData);
 		ChatMessage.create(chatData);
 	}
 

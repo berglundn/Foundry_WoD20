@@ -46,7 +46,7 @@
                 <div class="width-smallbox">{{shorten (localize (getAttributes item.system.attack.attribute)) 10}}&nbsp;</div>
                 <div class="width-abilitybox">
                     {{#if (eq item.system.attack.ability "custom")}}
-                        {{shorten (getSecondaryAbility item.system.attack.ability ../actor item.system.attack.secondaryabilityid) 10}}
+                        {{shorten (localize (getSecondaryAbility item.system.attack.ability ../actor item.system.attack.secondaryabilityid)) 10}}
                     {{else}}
                         {{shorten (localize (getAbility item.system.attack.ability ../actor)) 10}}
                     {{/if}}&nbsp;

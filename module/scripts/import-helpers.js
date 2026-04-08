@@ -64,7 +64,7 @@ export default class ItemHelper {
 
             if (disciplineItemData.system?.settings) {
                 disciplineItemData.system.settings.iscreated = true;
-                disciplineItemData.system.settings.version = game.data.system.version || "";
+                disciplineItemData.system.settings.version = game.system.version || "";
             }
 
             const created = await Item.createDocuments([disciplineItemData], {
@@ -84,7 +84,7 @@ export default class ItemHelper {
                 if (!powerItemData.system.settings) powerItemData.system.settings = {};
                 powerItemData.system.settings.parentid = disciplineItemId;
                 powerItemData.system.settings.iscreated = true;
-                powerItemData.system.settings.version = game.data.system.version || "";
+                powerItemData.system.settings.version = game.system.version || "";
                 powerItemsData.push(powerItemData);
             }
 

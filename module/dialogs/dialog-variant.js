@@ -122,7 +122,7 @@ export class DialogVariant extends FormApplication {
 
         actorData.system.settings.isupdated = false;
         await this.actor.update(actorData);
-        await CreateHelper.SetVariantItems(this.actor, this.object.variant, game.data.system.version);
+        await CreateHelper.SetVariantItems(this.actor, this.object.variant, game.system.version);
 
         this.close();
     }

@@ -5,7 +5,12 @@
 
         {{#if (eq item.type "Rote")}}
 
-            <div class="width-namebox">{{item.name}}</div>
+            <div class="width-namebox vrollable"
+                data-action="rollDice"
+                data-type="{{config.sheettype.mage}}"
+                data-object="{{item.system.type}}"
+                data-rollitem="true"
+                data-itemid="{{item._id}}">{{item.name}}</div>
 
         {{else if item.system.isrollable}}
 

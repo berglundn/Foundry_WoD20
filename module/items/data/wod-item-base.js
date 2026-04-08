@@ -26,7 +26,7 @@ export class WoDItem extends Item {
 
 			if (!data.system.iscreated) {
 				updates["system.iscreated"] = true;
-				updates["system.version"] = game.data.system.version;
+				updates["system.version"] = game.system.version;
 
 				if (data.type === "Ability") {
 					if (!data.system.id || data.system.id === "") {

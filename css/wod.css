@@ -616,7 +616,7 @@ input.sheet-infoWidth {
   scale: 3; 
   position: absolute; 
   bottom: 20px; 
-  right: -15px;
+  right: 20px;
 }
 
 .wod20 i.transparent {
@@ -631,6 +631,10 @@ input.sheet-infoWidth {
 .wod20 .sheet-boxcontainer {
   width: 100%;
   text-align: center;
+}
+
+.wod20 .sheet-area {
+  max-width: 880px;
 }
 
 .wod20 .sheet-area.flex-columns {
@@ -1195,6 +1199,31 @@ input.sheet-infoWidth {
   width: 30%;
   height: 34px;
   margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.wod20 .dialog-secondaryability-buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.wod20 .dialog-secondaryability-buttons .dialog-secondaryability-button {
+  float: none !important;
+  flex: 0 1 30%;
+  min-width: 0;
+  max-width: 30%;
+  width: auto;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  box-sizing: border-box;
 }
 
 /* Dialog button rules */
@@ -1461,7 +1490,7 @@ input.sheet-infoWidth {
 
 .wod20 .width-iconbox,
 .wod20-drag-row .width-iconbox {
-  margin-right: 2px;
+  margin-right: 5px;
   width: 15px;
 }
 

@@ -1209,7 +1209,7 @@ export default class DropHelper {
 
                     settings: {
                         itemuuid: "",
-                        version: game.data.system.version,
+                        version: game.system.version,
                         isfavorited: ability.system.settings.isfavorited,
                         alwaysspeciality: ability.system.settings.alwaysspeciality,
                         ismeleeweapon: ability.system.settings.ismeleeweapon,
@@ -1257,7 +1257,7 @@ export default class DropHelper {
         loadedData.system.settings.isremovable = false;
 
         loadedData.system.settings.itemuuid = ability.uuid;
-        loadedData.system.settings.version = game.data.system.version;
+        loadedData.system.settings.version = game.system.version;
 
         return loadedData;
     }
@@ -1272,7 +1272,7 @@ export default class DropHelper {
         }
         
         loadedData.system.settings.itemuuid = advantage.uuid;
-        loadedData.system.settings.version = game.data.system.version;
+        loadedData.system.settings.version = game.system.version;
         loadedData.system.settings.order = advantage.system.settings.order;
 
         return loadedData;
@@ -1283,7 +1283,7 @@ export default class DropHelper {
         loadedData.system.isvisible = true;
 
         loadedData.system.itemuuid = feature.uuid;
-        loadedData.system.version = game.data.system.version;
+        loadedData.system.version = game.system.version;
         loadedData.system.order = feature.system.order;
 
         return loadedData;
@@ -1294,7 +1294,7 @@ export default class DropHelper {
         loadedData.system.settings.isvisible = true;
         
         loadedData.system.settings.itemuuid = power.uuid;
-        loadedData.system.settings.version = game.data.system.version;
+        loadedData.system.settings.version = game.system.version;
         loadedData.system.settings.order = power.system.settings.order;
 
         return loadedData;

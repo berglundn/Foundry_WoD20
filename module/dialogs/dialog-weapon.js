@@ -586,7 +586,7 @@ export class DialogWeapon extends FormApplication {
 
             // if several targets number of dices will be different
             if (this.object.numberoftargets == 1) {
-                numDices = parseInt(this.object.attributeValue) + parseInt(this.object.abilityValue) + parseInt(this.object.bonus) + parseInt(this.object.extraSuccesses);
+                numDices = parseInt(this.object.attributeValue) + parseInt(this.object.abilityValue) + parseInt(this.object.bonus) + parseInt(this.object.extraSuccesses) + (parseInt(this.object.dodgebonus) || 0);
             }
         }
         else {

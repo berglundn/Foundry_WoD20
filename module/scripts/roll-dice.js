@@ -376,9 +376,8 @@ export async function DiceRoller(diceRoll) {
         rolls: allDices,
         content: html,
 		speaker: ChatMessage.getSpeaker({ actor: actor }),
-        rollMode: game.settings.get("core", "rollMode")        
     };
-    ChatMessage.applyRollMode(chatData, "roll");
+    ChatMessage.applyMode(chatData);
     ChatMessage.create(chatData);
 
     return success;
@@ -492,9 +491,8 @@ export async function InitiativeRoll(diceRoll) {
     const chatData = {
         content: html,
 		speaker: ChatMessage.getSpeaker({ actor: actor }),
-        rollMode: game.settings.get("core", "rollMode")        
     };
-    ChatMessage.applyRollMode(chatData, "roll");
+    ChatMessage.applyMode(chatData);
     ChatMessage.create(chatData);
 
 	return true;

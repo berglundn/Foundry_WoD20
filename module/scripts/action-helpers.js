@@ -1742,9 +1742,8 @@ export const SendChat = async function (event, target) {
 	const chatData = {
 		content: html,
 		speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-		rollMode: game.settings.get("core", "rollMode")        
 	};
-	ChatMessage.applyRollMode(chatData, "roll");
+	ChatMessage.applyMode(chatData);
 	ChatMessage.create(chatData);
 }
 

@@ -453,7 +453,7 @@ Hooks.once("ready", async function () {
 	game.worldofdarkness.powers = await WoDSetup.getInstalledPowers(game.items.contents, true);
 
 	const installedVersion = game.settings.get('worldofdarkness', 'worldVersion');
-  	const systemVersion = game.data.system.version;	
+  	const systemVersion = game.system.version;	
 	const test = false;
 
 	// Handle token icons for shapeforms. Since these are dynamic and can be added by users, we need to register them as status effects so that they can be used as token icons.

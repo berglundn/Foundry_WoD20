@@ -19,6 +19,13 @@
                     {{/if}}
                     {{object.bonus}}
                 {{/if}}
+                {{#if (lt object.bonus 0)}}
+                    {{object.bonus}}
+                {{/if}}
+
+                {{#if (ne object.dodgebonus 0)}}
+                    {{#if (gt object.dodgebonus 0)}} +{{/if}} {{object.dodgebonus}}
+                {{/if}}
 
                 {{object.damageCode}}
             </div>
@@ -87,9 +94,13 @@
                         {{#if (eq config.meleeAbilities.length 0)}}
                             {{localize "wod.dialog.weapon.nomeleeweapon"}}
                         {{/if}}
+                        {{#if (gt config.meleeAbilities.length 0)}}
+                        <div class="dialog-secondaryability-buttons">
                         {{#each config.meleeAbilities as |ability key|}}
                             <button id="secondaryability" class="button fullSplatColor pointer dialog-secondaryability-button {{#if (eq ../object.secondaryabilityid ability._id)}}active{{/if}}" value="{{ability._id}}">{{ability.name}}</button>
                         {{/each}}
+                        </div>
+                        {{/if}}
                     </div>
                 {{/if}}
 
@@ -98,9 +109,13 @@
                         {{#if (eq config.rangedAbilities.length 0)}}
                             {{localize "wod.dialog.weapon.norangedweapon"}}
                         {{/if}}
+                        {{#if (gt config.rangedAbilities.length 0)}}
+                        <div class="dialog-secondaryability-buttons">
                         {{#each config.rangedAbilities as |ability key|}}
                             <button id="secondaryability" class="button fullSplatColor pointer dialog-secondaryability-button {{#if (eq ../object.secondaryabilityid ability._id)}}active{{/if}}" value="{{ability._id}}">{{ability.name}}</button>
                         {{/each}}
+                        </div>
+                        {{/if}}
                     </div>
                 {{/if}}
 

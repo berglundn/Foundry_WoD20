@@ -23,9 +23,8 @@ export default class MessageHelper {
 		const chatData = {
 			content: html,
 			speaker: ChatMessage.getSpeaker({ actor: actor }),
-			rollMode: game.settings.get("core", "rollMode")        
 		};
-		ChatMessage.applyRollMode(chatData, "roll");
+		ChatMessage.applyMode(chatData);
 		ChatMessage.create(chatData);
 	}
 }

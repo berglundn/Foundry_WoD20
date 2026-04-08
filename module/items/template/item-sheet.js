@@ -33,7 +33,7 @@ export default class WoDItemSheet extends foundry.appv1.sheets.ItemSheet {
 		const itemData = foundry.utils.duplicate(this.item);		
 
 		if (!itemData.system.iscreated) {
-			itemData.system.version = game.data.system.version;
+			itemData.system.version = game.system.version;
 			itemData.system.iscreated = true;
 			await this.item.update(itemData);
 		}

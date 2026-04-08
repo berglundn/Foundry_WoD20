@@ -250,7 +250,7 @@ export default class CreateHelper {
 				type: "Trait",					
 				system: {
 					iscreated: true,
-					version: game.data.system.version,
+					version: game.system.version,
 					label: "wod.realms.actor",
 					type: "wod.types.realms"
 				}
@@ -265,7 +265,7 @@ export default class CreateHelper {
 				type: "Trait",
 				system: {
 					iscreated: true,
-					version: game.data.system.version,
+					version: game.system.version,
 					label: "wod.realms.fae",
 					type: "wod.types.realms"
 				}
@@ -280,7 +280,7 @@ export default class CreateHelper {
 				type: "Trait",
 				system: {
 					iscreated: true,
-					version: game.data.system.version,
+					version: game.system.version,
 					label: "wod.realms.nature",
 					type: "wod.types.realms"
 				}
@@ -295,7 +295,7 @@ export default class CreateHelper {
 				type: "Trait",
 				system: {
 					iscreated: true,
-					version: game.data.system.version,
+					version: game.system.version,
 					label: "wod.realms.prop",
 					type: "wod.types.realms"
 				}
@@ -310,7 +310,7 @@ export default class CreateHelper {
 				type: "Trait",
 				system: {
 					iscreated: true,
-					version: game.data.system.version,
+					version: game.system.version,
 					label: "wod.realms.scene",
 					type: "wod.types.realms"
 				}
@@ -325,7 +325,7 @@ export default class CreateHelper {
 				type: "Trait",
 				system: {
 					iscreated: true,
-					version: game.data.system.version,
+					version: game.system.version,
 					label: "wod.realms.time",
 					type: "wod.types.realms"
 				}
@@ -374,7 +374,7 @@ export default class CreateHelper {
 						type: "Trait",						
 						system: {
 							iscreated: true,
-							version: game.data.system.version,
+							version: game.system.version,
 							level: 0,
 							type: "wod.types.apocalypticform"
 						}

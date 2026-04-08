@@ -85,6 +85,8 @@ export default class WoDItemSheetV2 extends HandlebarsApplicationMixin(foundry.a
         data.isCharacter = this.isCharacter;
         data.isGM = this.isGM;     
 
+        //console.log("Context data:", this);
+
         return {
             ...data
         }

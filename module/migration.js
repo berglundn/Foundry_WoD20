@@ -373,41 +373,41 @@ export  const updates = async () => {
 
         await actor.update(updateData);
 
-        updateData.system.settings['-=created'] = null;
-        updateData.system.settings.soak.bashing['-=roll'] = null;
-        updateData.system.settings.soak.lethal['-=roll'] = null;
-        updateData.system.settings.soak.aggravated['-=roll'] = null;
+        // updateData.system.settings['-=created'] = null;
+        // updateData.system.settings.soak.bashing['-=roll'] = null;
+        // updateData.system.settings.soak.lethal['-=roll'] = null;
+        // updateData.system.settings.soak.aggravated['-=roll'] = null;
 
-        updateData.system.conditions['-=ignorepain'] = null;
-        updateData.system.conditions['-=stunned'] = null;
+        // updateData.system.conditions['-=ignorepain'] = null;
+        // updateData.system.conditions['-=stunned'] = null;
 
-        if (updateData.type != CONFIG.worldofdarkness.sheettype.spirit) {
-            for (const attribute in updateData.system.attributes) {
-                updateData.system.attributes[attribute]['-=visible'] = null;
-            }
+        // if (updateData.type != CONFIG.worldofdarkness.sheettype.spirit) {
+        //     for (const attribute in updateData.system.attributes) {
+        //         updateData.system.attributes[attribute]['-=visible'] = null;
+        //     }
 
-            for (const ability in updateData.system.abilities.talent) {
-                updateData.system.abilities.talent[ability]['-=visible'] = null;
-            }
+        //     for (const ability in updateData.system.abilities.talent) {
+        //         updateData.system.abilities.talent[ability]['-=visible'] = null;
+        //     }
 
-            for (const ability in updateData.system.abilities.skill) {
-                updateData.system.abilities.skill[ability]['-=visible'] = null;                   
-            }
+        //     for (const ability in updateData.system.abilities.skill) {
+        //         updateData.system.abilities.skill[ability]['-=visible'] = null;                   
+        //     }
 
-            for (const ability in updateData.system.abilities.knowledge) {
-                updateData.system.abilities.knowledge[ability]['-=visible'] = null;                   
-            }
-        }
+        //     for (const ability in updateData.system.abilities.knowledge) {
+        //         updateData.system.abilities.knowledge[ability]['-=visible'] = null;                   
+        //     }
+        // }
 
-        if (updateData.type == CONFIG.worldofdarkness.sheettype.werewolf) {
-            updateData.system.conditions['-=frenzy'] = null;
+        // if (updateData.type == CONFIG.worldofdarkness.sheettype.werewolf) {
+        //     updateData.system.conditions['-=frenzy'] = null;
 
-            updateData.system.shapes.homid['-=active'] = null;
-            updateData.system.shapes.glabro['-=active'] = null;
-            updateData.system.shapes.crinos['-=active'] = null;
-            updateData.system.shapes.hispo['-=active'] = null;
-            updateData.system.shapes.lupus['-=active'] = null;
-        } 
+        //     updateData.system.shapes.homid['-=active'] = null;
+        //     updateData.system.shapes.glabro['-=active'] = null;
+        //     updateData.system.shapes.crinos['-=active'] = null;
+        //     updateData.system.shapes.hispo['-=active'] = null;
+        //     updateData.system.shapes.lupus['-=active'] = null;
+        // } 
 
         await actor.update(updateData);
     }
@@ -560,7 +560,7 @@ export  const updates = async () => {
                         await actor.createEmbeddedDocuments("Item", [itemData]);           
                     }
 
-                    updateData.system.abilities.talent['-=' + ability] = null;
+                    //updateData.system.abilities.talent['-=' + ability] = null;
                     update = true;
                 }
             }
@@ -588,7 +588,7 @@ export  const updates = async () => {
                         await actor.createEmbeddedDocuments("Item", [itemData]);                        
                     }
 
-                    updateData.system.abilities.skill['-=' + ability] = null;
+                    //updateData.system.abilities.skill['-=' + ability] = null;
                     update = true;
                 }
             }
@@ -616,7 +616,7 @@ export  const updates = async () => {
                         await actor.createEmbeddedDocuments("Item", [itemData]);                        
                     }
 
-                    updateData.system.abilities.knowledge['-=' + ability] = null;
+                    //updateData.system.abilities.knowledge['-=' + ability] = null;
                     update = true;
                 }
             }
@@ -793,62 +793,62 @@ export  const updates = async () => {
         }        
 
         // old errors
-        if (updateData.type != CONFIG.worldofdarkness.sheettype.mage) {
-            updateData['system.-=paradox'] = null;
-        }
+        // if (updateData.type != CONFIG.worldofdarkness.sheettype.mage) {
+        //     updateData['system.-=paradox'] = null;
+        // }
 
         // remove of the old advantages
-        if (updateData.type != CONFIG.worldofdarkness.sheettype.spirit) {
-            updateData['system.-=willpower'] = null;
-            updateData['system.-=bloodpool'] = null;
-            updateData['system.health.-=totalhealthlevels'] = null;
-            updateData['system.-=isactive'] = null;
-            update = true;
-        }
+        // if (updateData.type != CONFIG.worldofdarkness.sheettype.spirit) {
+        //     updateData['system.-=willpower'] = null;
+        //     updateData['system.-=bloodpool'] = null;
+        //     updateData['system.health.-=totalhealthlevels'] = null;
+        //     updateData['system.-=isactive'] = null;
+        //     update = true;
+        // }
 
-        if (updateData.type == CONFIG.worldofdarkness.sheettype.werewolf) {
-            updateData['system.-=rage'] = null;
-            updateData['system.-=gnosis'] = null;
-            update = true;
-        }      
+        // if (updateData.type == CONFIG.worldofdarkness.sheettype.werewolf) {
+        //     updateData['system.-=rage'] = null;
+        //     updateData['system.-=gnosis'] = null;
+        //     update = true;
+        // }      
         
-        if (updateData == CONFIG.worldofdarkness.sheettype.vampire) {
-            updateData['system.advantages.path.-=value'] = null;
-            updateData['system.advantages.virtues.conscience.-=value'] = null;
-            updateData['system.advantages.virtues.selfcontrol.-=value'] = null;
-            updateData['system.advantages.virtues.courage.-=value'] = null;
-            update = true;
-        }
+        // if (updateData == CONFIG.worldofdarkness.sheettype.vampire) {
+        //     updateData['system.advantages.path.-=value'] = null;
+        //     updateData['system.advantages.virtues.conscience.-=value'] = null;
+        //     updateData['system.advantages.virtues.selfcontrol.-=value'] = null;
+        //     updateData['system.advantages.virtues.courage.-=value'] = null;
+        //     update = true;
+        // }
 
-        if (updateData.type == CONFIG.worldofdarkness.sheettype.mage) {
-            updateData['system.-=arete'] = null;
-            update = true;
-        }
+        // if (updateData.type == CONFIG.worldofdarkness.sheettype.mage) {
+        //     updateData['system.-=arete'] = null;
+        //     update = true;
+        // }
 
-        if (updateData.type == CONFIG.worldofdarkness.sheettype.changeling) {
-            updateData['system.-=glamour'] = null;
-            updateData['system.-=banality'] = null;
-            updateData['system.-=nightmare'] = null;
-            update = true;
-        }
+        // if (updateData.type == CONFIG.worldofdarkness.sheettype.changeling) {
+        //     updateData['system.-=glamour'] = null;
+        //     updateData['system.-=banality'] = null;
+        //     updateData['system.-=nightmare'] = null;
+        //     update = true;
+        // }
 
-        if (updateData.type == CONFIG.worldofdarkness.sheettype.creature) {
-            updateData['system.-=rage'] = null;
-            updateData['system.-=gnosis'] = null;
-            updateData['system.-=glamour'] = null;
-            updateData['system.-=banality'] = null;
-            updateData['system.-=nightmare'] = null;
-            updateData['system.-=essence'] = null;
-            update = true;
-        }
+        // if (updateData.type == CONFIG.worldofdarkness.sheettype.creature) {
+        //     updateData['system.-=rage'] = null;
+        //     updateData['system.-=gnosis'] = null;
+        //     updateData['system.-=glamour'] = null;
+        //     updateData['system.-=banality'] = null;
+        //     updateData['system.-=nightmare'] = null;
+        //     updateData['system.-=essence'] = null;
+        //     update = true;
+        // }
 
-        if (updateData.type == CONFIG.worldofdarkness.sheettype.spirit) {
-            updateData['system.-=rage'] = null;
-            updateData['system.-=gnosis'] = null;
-            updateData['system.-=willpower'] = null;
-            updateData['system.-=essence'] = null;
-            update = true;
-        }
+        // if (updateData.type == CONFIG.worldofdarkness.sheettype.spirit) {
+        //     updateData['system.-=rage'] = null;
+        //     updateData['system.-=gnosis'] = null;
+        //     updateData['system.-=willpower'] = null;
+        //     updateData['system.-=essence'] = null;
+        //     update = true;
+        // }
 
         if (update) {
             await actor.update(updateData);
@@ -2094,88 +2094,88 @@ export  const updates = async () => {
         }
 
         // Armor
-        if (item.type == "Armor") {
-            itemData.system.forms['-=homid'] = null;
-            itemData.system.forms['-=glabro'] = null;
-            itemData.system.forms['-=crinos'] = null;
-            itemData.system.forms['-=hispo'] = null;
-            itemData.system.forms['-=lupus'] = null;
+        // if (item.type == "Armor") {
+        //     itemData.system.forms['-=homid'] = null;
+        //     itemData.system.forms['-=glabro'] = null;
+        //     itemData.system.forms['-=crinos'] = null;
+        //     itemData.system.forms['-=hispo'] = null;
+        //     itemData.system.forms['-=lupus'] = null;
 
-            altered = true;
-        }
+        //     altered = true;
+        // }
 
-        // Weapons
-        if ((item.type == "Melee Weapon") || (item.type == "Ranged Weapon")) {
-            itemData.system.attack['-=roll'] = null;
-            itemData.system.attack['-=isRollable'] = null;
-            itemData.system.damage['-=roll'] = null;
-            itemData.system.damage['-=isRollable'] = null;
-            itemData.system['-=diff'] = null;
-            itemData.system['-=twohanded'] = null;
+        // // Weapons
+        // if ((item.type == "Melee Weapon") || (item.type == "Ranged Weapon")) {
+        //     itemData.system.attack['-=roll'] = null;
+        //     itemData.system.attack['-=isRollable'] = null;
+        //     itemData.system.damage['-=roll'] = null;
+        //     itemData.system.damage['-=isRollable'] = null;
+        //     itemData.system['-=diff'] = null;
+        //     itemData.system['-=twohanded'] = null;
 
-            altered = true;
-        }
+        //     altered = true;
+        // }
 
-        // Melee Weapon
-        if (item.type == "Melee Weapon") {
-            itemData.system['-=natural'] = null;
+        // // Melee Weapon
+        // if (item.type == "Melee Weapon") {
+        //     itemData.system['-=natural'] = null;
 
-            altered = true;
-        }
+        //     altered = true;
+        // }
 
-        // Ranged Weapon
-        if (item.type == "Ranged Weapon") {
-            itemData.system.mode['-=reload'] = null;
-            itemData.system.mode['-=burst'] = null;
-            itemData.system.mode['-=fullauto'] = null;
-            itemData.system.mode['-=spray'] = null;
+        // // Ranged Weapon
+        // if (item.type == "Ranged Weapon") {
+        //     itemData.system.mode['-=reload'] = null;
+        //     itemData.system.mode['-=burst'] = null;
+        //     itemData.system.mode['-=fullauto'] = null;
+        //     itemData.system.mode['-=spray'] = null;
 
-            altered = true;
-        }
+        //     altered = true;
+        // }
 
-        // Fetish
-        if (item.type == "Fetish") {
-            itemData.system['-=diff'] = null;
+        // // Fetish
+        // if (item.type == "Fetish") {
+        //     itemData.system['-=diff'] = null;
 
-            altered = true;
-        }
+        //     altered = true;
+        // }
 
-        // Power
-        if (item.type == "Power") {
-            itemData.system['-=active'] = null;
-            itemData.system['-=rollable'] = null;
-            itemData.system['-=isRollable'] = null;
+        // // Power
+        // if (item.type == "Power") {
+        //     itemData.system['-=active'] = null;
+        //     itemData.system['-=rollable'] = null;
+        //     itemData.system['-=isRollable'] = null;
 
-            altered = true;
-        }                      
+        //     altered = true;
+        // }                      
 
-        // Rote
-        if (item.type == "Rote") {
-            itemData.system.instrument['-=personalized'] = null;
-            itemData.system.instrument['-=unique'] = null;
+        // // Rote
+        // if (item.type == "Rote") {
+        //     itemData.system.instrument['-=personalized'] = null;
+        //     itemData.system.instrument['-=unique'] = null;
 
-            altered = true;
-        }
+        //     altered = true;
+        // }
 
-        // Feature
-        if (item.type == "Feature") {
-            itemData.system['-=roll'] = null;
-            itemData.system['-=isRollable'] = null;
+        // // Feature
+        // if (item.type == "Feature") {
+        //     itemData.system['-=roll'] = null;
+        //     itemData.system['-=isRollable'] = null;
 
-            altered = true;
-        }
+        //     altered = true;
+        // }
         
-        if (item.type == "Experience") {
-            itemData.system['-=spent'] = null;
+        // if (item.type == "Experience") {
+        //     itemData.system['-=spent'] = null;
 
-            altered = true;
-        }
+        //     altered = true;
+        // }
 
-        if (item.type != "Experience") {      
-            itemData.system['-=created'] = null;  
+        // if (item.type != "Experience") {      
+        //     itemData.system['-=created'] = null;  
 
-            altered = true;
-        }
+        //     altered = true;
+        // }
 
         if (altered) {
             await item.update(itemData);
@@ -2208,12 +2208,12 @@ export  const updates = async () => {
             altered = false;
         }
 
-        if ((item.type == "Armor") || (item.type == "Melee Weapon") || (item.type == "Ranged Weapon") || (item.type == "Fetish")) {
-            itemData.system['-=isEquipped'] = null;
-            itemData.system['-=isMagical'] = null;
+        // if ((item.type == "Armor") || (item.type == "Melee Weapon") || (item.type == "Ranged Weapon") || (item.type == "Fetish")) {
+        //     itemData.system['-=isEquipped'] = null;
+        //     itemData.system['-=isMagical'] = null;
 
-            altered = true;
-        }
+        //     altered = true;
+        // }
 
         if (altered) {
             await item.update(itemData);
@@ -2228,7 +2228,7 @@ export  const updates = async () => {
 
         if (item.type == "Power") {
             itemData.system.details = itemData.system.system;
-            itemData['system.-=system'] = null;
+            //itemData['system.-=system'] = null;
 
             altered = true;
         }
@@ -2532,6 +2532,30 @@ export  const updates = async () => {
             altered = false;
         }
     }
+
+    if (_compareVersion(itemversion, "7.0.0")) {
+        let itemData = foundry.utils.duplicate(item);
+
+        if ((item.type === "Ability") && (item.system.id === "archery")) {
+            itemData.system.settings.israngedeweapon = true;
+            altered = true;
+        }                
+
+        if (altered) {
+            if (itemData.system?.settings?.version !== undefined) {
+                itemData.system.settings.version = "7.0.0";
+            }
+            else {
+                itemData.system.version = "7.0.0";
+            }
+            
+            await item.update(itemData);
+
+            console.log("WoD Migration | Updated archery ability to be marked as ranged weapon.");
+            
+            altered = false;
+        }
+    }
  };
 
  /**
@@ -2632,6 +2656,7 @@ export  const updates = async () => {
         patch420 = game.settings.get('worldofdarkness', 'patch420');
         patch500 = game.settings.get('worldofdarkness', 'patch500');
         patch600 = game.settings.get('worldofdarkness', 'patch600');
+        patch700 = game.settings.get('worldofdarkness', 'patch700');
     } 
     catch (e) {
     }
@@ -2770,175 +2795,103 @@ export  const updates = async () => {
         newfunctions += '<li>[MtA] Fixed problem with Arete rolls being cleared.</li>';
         newfunctions += '<li>[CtD] Fixed problem to see type of cantrip in art list</li>';
         newfunctions += '<li>Fixed a bunch of bugs and other minor issues</li>';
+    }
 
-        // Complex messages for wizard (only shown to GM)
-        // MigrationWizard.show([
-        //     "Detaljerad information om Foundry version 13...",
-        //     "Detaljerad information om Drag and Drop funktionalitet...",
-        //     "Viktiga ändringar i systemet..."
-        // ]);
+    if (!patch700) {
+        game.settings.set('worldofdarkness', 'patch700', true);
+
+        newfunctions += '<li>Foundry version 14</li>';
+        newfunctions += '<li>Fixed problems with Dark Ages ranged weapons</li>';
+        newfunctions += '<li>Fixed the dodge modifier</li>';
+        newfunctions += '<li>[MtA] You can now roll rotes on PC Actors</li>';
     }
 
     if (newfunctions == "") {
-        newfunctions += 'Issues fixed in version:<br />';
+        newfunctions += 'Issues fixed in version:<br />';        
 
-        if (_compareVersion(installedVersion, '6.0.13')) {
-            newfunctions += '<li>[VtM] Fixed bug creating combination disciplines.</li>';
-        }
-
-        if (_compareVersion(installedVersion, '6.0.12')) {
-            newfunctions += '<li>[General] Updated language for Bazilian Portuguese.</li>';
-            newfunctions += '<li>[General] Improved on handling actor/item updates.</li>';
-            newfunctions += '<li>[General] Fixed problem with powers e.g disciplines being read from compendiums and then listed as you create items.</li>';
-        }
-
-        if (_compareVersion(installedVersion, '6.0.11')) {
-            newfunctions += '<li>[General] Fixed issue where weapons did not save their era correctly.</li>';
-            newfunctions += '<li>[PC Actor] Fixed issue where using other template than a modern one would cause the setup to fail.</li>';
-        }
-
-        if (_compareVersion(installedVersion, '6.0.10')) {
-            newfunctions += '<li>[General] Description and system was not visible on items if user was set as observer. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1362">[#1362]</a></li>';
-            newfunctions += '<li>[General] You can now set higher max values on attributes that the general max value in attribute settings.</li>';
-            newfunctions += '<li>[General] Minor dark mode fixes.</li>';            
-            newfunctions += '<li>[General] If no virtues where visible, do not show the virtue box on PC actors.</li>';
-            newfunctions += '<li>[General] PC actors could not clear health levels with right click.</li>';
-            newfunctions += '<li>[General] PC actors other traits with rolls did not display the sheets advantages.</li>';
-            newfunctions += '<li>[General] Fixed graphical issue with chat display of sparying damage.</li>';
-            newfunctions += '<li>[General] Rebuilt weapon dialog for attacking and damage.</li>';
-            newfunctions += '<li>[MtA] Could not set PC actor sphere to technocracy versions.</li>';
-            newfunctions += '<li>[MtA] PC Actor did not show resonance value correctly.</li>';            
-        }
-
-        if (_compareVersion(installedVersion, '6.0.9')) {
-            newfunctions += '<li>[General] Fixed problem that caused secondary abilities max value to not be updated correctly.</li>';
-            newfunctions += '<li>[WtA] Fixed graphical problems of showing attributes and abilities higher than five.</li>';
-            newfunctions += '<li>[VtM] Fixed problem that caused vampire actors not able to roll virtues.</li>';
-        }
-
-        if (_compareVersion(installedVersion, '6.0.8')) {
-            newfunctions += '<li>[General] What was before known as Splat items and referred as such is now called "Template".</li>';
-            newfunctions += '<li>[General] Improved on the presentation on a PC actor shapes.</li>';
-            newfunctions += '<li>[General] Fixed problem if you tried update a pc actor in a compendium.</li>';
-            newfunctions += '<li>[General] Bonus to soak was not calculated correctly.</li>';
-            newfunctions += '<li>[WtA] On PC actor auspice was displayed twice.</li>';
-            newfunctions += '<li>[VtM] Fixed a problem where Discipline rating was hidden on the sheet.</li>';
-        }
-
-        if (_compareVersion(installedVersion, '6.0.7')) {
-            newfunctions += '<li>[General] Fixed update of total values on PC actors.</li>';
-            newfunctions += '<li>[MtA] Fixed spelling error of numen.</li>';
-            newfunctions += '<li>[MtA] Fixed alignment of power section on PC actor.</li>';
-        }
-
-        if (_compareVersion(installedVersion, '6.0.6')) {
-            newfunctions += '<li>[General] Fixed switching eras.</li>';
-            newfunctions += '<li>[General] Fixed problem causing you not to be able to alter a secondary ability name.</li>';
-            newfunctions += '<li>[General] Wound penalty was not shown correctly on sheet.</li>';
-            newfunctions += '<li>[General] Fixed problem that prevented you from rolling an other trait.</li>';
-            newfunctions += '<li>[WtA] Fixed serious problem to werewolves shape bonuses that was caused by update between v5 and v6. All werewolves shapes has been recreated.</li>';
-            newfunctions += '<li>[WtO] Vitality on orpheus sheets now has temporary values.</li>';
-        }
-
-        if (_compareVersion(installedVersion, '6.0.5')) {
-            newfunctions += '<li>[General] Fixed problem creating secondary abilities.</li>';
-            newfunctions += '<li>[General] Fixed problem updating secondary abilities.</li>';
-            newfunctions += '<li>[PC actor] Fixed problem showing 5th edition attributes.</li>'; 
-            newfunctions += '<li>[PC actor] Generation value not shown on locked sheet.</li>'; 
-            newfunctions += '<li>[PC actor] Fixed problem handling generation shifts that cause max values to be altered.</li>';            
-        }
-
-        if (_compareVersion(installedVersion, '6.0.4')) {
-            newfunctions += '<li>[PC actor] Fixed more dark mode problems.</li>'; 
-            newfunctions += '<li>[PC actor] Fixed a problem that caused some of the items added by drag and drop could not be removed.</li>';
-            newfunctions += '<li>[PC actor] Fixed a viewing problem with shapes that used a fixed value bonus.</li>';
-        }
-
-        if (_compareVersion(installedVersion, '6.0.2')) {
-            newfunctions += '<li>[PC actor] Added so you can give a shape on PC actor a token image, this causes you to be able to shift token image based on what shape the actor has.</li>'; 
-            newfunctions += '<li>[PC actor] Fixed dark mode problem on the items ability, advantage and spheres used by PC actor.</li>';
-            newfunctions += '<li>[PC actor] Fixed a problem with removing old virtues on PC actors.</li>';
-            newfunctions += '<li>[PC actor] Fixed alignment problems PC actor macro meny.</li>';
-            newfunctions += '<li>[PC actor] Fixed problem to change actor image on PC actor.</li>';             
-        }
-
-        if (_compareVersion(installedVersion, '6.0.1')) {
-             newfunctions += '<li>[General] Fixed dark mode problem on message wizard.</li>';
-             newfunctions += '<li>[PC actor] Fixed problems to open a newly created PC actor.</li>';
-        }
-        
-        // if (_compareVersion(installedVersion, '5.0.15')) {
-        //     newfunctions += '<li>[General] Fixed bugg that caused the bonus for certain rolls to add dices that should not exist. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1284">[#1284]</a></li>';
+        // if (_compareVersion(installedVersion, '6.0.13')) {
+        //     newfunctions += '<li>[VtM] Fixed bug creating combination disciplines.</li>';
         // }
 
-        // if (_compareVersion(installedVersion, '5.0.14')) {
-        //     newfunctions += '<li>[General] New world setting - Willpower spending +3 Dice prevents botch. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1089">[#1089]</a></li>';
+        // if (_compareVersion(installedVersion, '6.0.12')) {
+        //     newfunctions += '<li>[General] Updated language for Bazilian Portuguese.</li>';
+        //     newfunctions += '<li>[General] Improved on handling actor/item updates.</li>';
+        //     newfunctions += '<li>[General] Fixed problem with powers e.g disciplines being read from compendiums and then listed as you create items.</li>';
         // }
 
-        // if (_compareVersion(installedVersion, '5.0.13')) {
-        //     newfunctions += '<li>[General] Dragging items from world to actor resets image. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1242">[#1242]</a></li>';
-        //     newfunctions += '<li>[WtA] Active gift list was broken.</b> <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1272">[#1272]</a></li>';
-        // }
-		
-		// if (_compareVersion(installedVersion, '5.0.12')) {
-        //     newfunctions += '<li>[General] Automatic spendage of temporary willpower when used in roll. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1253">[#1253]</a></li>';
-        // }
-		
-		// if (_compareVersion(installedVersion, '5.0.11')) {
-        //     newfunctions += '<li>[MtA] Your affinity sphere is not highlighted if technocratic. <b>Will require that you reselect your affinity sphere.</b> <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1245">[#1245]</a></li>';
-        //     newfunctions += '<li>[WtA] Baset sheet do not shift attributes as shift form. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1250">[#1250]</a></li>';
-		// 	newfunctions += '<li>[WtA] Mokole sheet do not shift attributes as shift form. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1251">[#1251]</a></li>';
+        // if (_compareVersion(installedVersion, '6.0.11')) {
+        //     newfunctions += '<li>[General] Fixed issue where weapons did not save their era correctly.</li>';
+        //     newfunctions += '<li>[PC Actor] Fixed issue where using other template than a modern one would cause the setup to fail.</li>';
         // }
 
-        // if (_compareVersion(installedVersion, '5.0.10')) {
-        //     newfunctions += '<li>[VtM] The icon to save selected disiplines when editing combination disciplines is now visible. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1238">[#1238]</a></li>';
-        //     newfunctions += '<li>[MtA] Description of Resonance buggs out. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1233">[#1233]</a></li>';
+        // if (_compareVersion(installedVersion, '6.0.10')) {
+        //     newfunctions += '<li>[General] Description and system was not visible on items if user was set as observer. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1362">[#1362]</a></li>';
+        //     newfunctions += '<li>[General] You can now set higher max values on attributes that the general max value in attribute settings.</li>';
+        //     newfunctions += '<li>[General] Minor dark mode fixes.</li>';            
+        //     newfunctions += '<li>[General] If no virtues where visible, do not show the virtue box on PC actors.</li>';
+        //     newfunctions += '<li>[General] PC actors could not clear health levels with right click.</li>';
+        //     newfunctions += '<li>[General] PC actors other traits with rolls did not display the sheets advantages.</li>';
+        //     newfunctions += '<li>[General] Fixed graphical issue with chat display of sparying damage.</li>';
+        //     newfunctions += '<li>[General] Rebuilt weapon dialog for attacking and damage.</li>';
+        //     newfunctions += '<li>[MtA] Could not set PC actor sphere to technocracy versions.</li>';
+        //     newfunctions += '<li>[MtA] PC Actor did not show resonance value correctly.</li>';            
         // }
 
-        // if (_compareVersion(installedVersion, '5.0.9')) {
-        //     newfunctions += '<li>[WtA] Fixed so you can alter temporary renown. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1228">[#1228]</a></li>';
-        //     newfunctions += '<li>[WtA]Added so you can spend Willpower on Shapechange rolls. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1228">[#1228]</a></li>';
-        //     newfunctions += '<li>[Orpheus] Fixed listings of Horrors and Stains. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1229">[#1229]</a></li>';
-        //     newfunctions += '<li>[Orpheus] Fixed rolling of Horrors. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1230">[#1230]</a></li>';
-        //     newfunctions += '<li>[Orpheus] Fixed adding bonuses to Horrors and Stains. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1231">[#1231]</a></li>';
+        // if (_compareVersion(installedVersion, '6.0.9')) {
+        //     newfunctions += '<li>[General] Fixed problem that caused secondary abilities max value to not be updated correctly.</li>';
+        //     newfunctions += '<li>[WtA] Fixed graphical problems of showing attributes and abilities higher than five.</li>';
+        //     newfunctions += '<li>[VtM] Fixed problem that caused vampire actors not able to roll virtues.</li>';
         // }
 
-        // if (_compareVersion(installedVersion, '5.0.8')) {
-        //     newfunctions += '<li>German has been updated.</li>';
-        //     newfunctions += '<li>[CtD] Fixed so Art Powers always are rollable. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1213">[#1213]</a></li>';
-        //     newfunctions += '<li>[CtD] Fixed so you can remove the last dot of Imbalance. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1211">[#1211]</a></li>';
-        //     newfunctions += '<li>[MtA] Era settings could not be seen under Settings -> Sheet Settings. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1212">[#1212]</a></li>';
-        //     newfunctions += '<li>[WtO] Fixed problem with opening certain sheets of Wraiths. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1214">[#1214]</a></li>';
+        // if (_compareVersion(installedVersion, '6.0.8')) {
+        //     newfunctions += '<li>[General] What was before known as Splat items and referred as such is now called "Template".</li>';
+        //     newfunctions += '<li>[General] Improved on the presentation on a PC actor shapes.</li>';
+        //     newfunctions += '<li>[General] Fixed problem if you tried update a pc actor in a compendium.</li>';
+        //     newfunctions += '<li>[General] Bonus to soak was not calculated correctly.</li>';
+        //     newfunctions += '<li>[WtA] On PC actor auspice was displayed twice.</li>';
+        //     newfunctions += '<li>[VtM] Fixed a problem where Discipline rating was hidden on the sheet.</li>';
         // }
 
-        // if (_compareVersion(installedVersion, '5.0.7')) {
-        //     newfunctions += '<li>Brazilian Portuguese has been updated.</li>';
-        //     newfunctions += '<li>[CtD] Adding/removing Imbalance was confusing so now you just right-click and it adds to Willpower as it should. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1211">[#1211]</a></li>';
-        //     newfunctions += '<li>[CtD] How using Nightmare dice with Cantrip casting was wrong so now if you have three nightmare dices or more to add you can check to add these to the roll. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1202">[#1202]</a></li>';
-        //     newfunctions += '<li>[CtD] As you rolled Cantrips the black Nightmare dices was not shown. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1209">[#1209]</a></li>';
-        //     newfunctions += '<li>[WtO] Temporary Corpus now handles damage as any health box should. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1206">[#1206]</a></li>';
+        // if (_compareVersion(installedVersion, '6.0.7')) {
+        //     newfunctions += '<li>[General] Fixed update of total values on PC actors.</li>';
+        //     newfunctions += '<li>[MtA] Fixed spelling error of numen.</li>';
+        //     newfunctions += '<li>[MtA] Fixed alignment of power section on PC actor.</li>';
         // }
 
-        // if (_compareVersion(installedVersion, '5.0.5')) {
-        //     newfunctions += '<li>[CtD] Unable to click and roll Art Powers. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1184">[#1184]</a></li>';
+        // if (_compareVersion(installedVersion, '6.0.6')) {
+        //     newfunctions += '<li>[General] Fixed switching eras.</li>';
+        //     newfunctions += '<li>[General] Fixed problem causing you not to be able to alter a secondary ability name.</li>';
+        //     newfunctions += '<li>[General] Wound penalty was not shown correctly on sheet.</li>';
+        //     newfunctions += '<li>[General] Fixed problem that prevented you from rolling an other trait.</li>';
+        //     newfunctions += '<li>[WtA] Fixed serious problem to werewolves shape bonuses that was caused by update between v5 and v6. All werewolves shapes has been recreated.</li>';
+        //     newfunctions += '<li>[WtO] Vitality on orpheus sheets now has temporary values.</li>';
         // }
 
-        // if (_compareVersion(installedVersion, '5.0.4')) {
-        //     newfunctions += '<li>[Exalted] Fixed rolling Exalted Charms and Exalted Ancient Sorcery. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1183">[#1183]</a></li>';
+        // if (_compareVersion(installedVersion, '6.0.5')) {
+        //     newfunctions += '<li>[General] Fixed problem creating secondary abilities.</li>';
+        //     newfunctions += '<li>[General] Fixed problem updating secondary abilities.</li>';
+        //     newfunctions += '<li>[PC actor] Fixed problem showing 5th edition attributes.</li>'; 
+        //     newfunctions += '<li>[PC actor] Generation value not shown on locked sheet.</li>'; 
+        //     newfunctions += '<li>[PC actor] Fixed problem handling generation shifts that cause max values to be altered.</li>';            
         // }
 
-        // if (_compareVersion(installedVersion, '5.0.2')) {
-        //     newfunctions += '<li>Fixed styling of tool tip text. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1170">[#1170]</a></li>';
-        //     newfunctions += '<li>[VtM] Background color error in dark mode when listing disciplines. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1169">[#1169]</a></li>';
-        //     newfunctions += '<li>[Exalted] Fixed tool tip of charms and spells. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1162">[#1162]</a></li>';
-        //     newfunctions += '<li>[Exalted] Fixed text problems when setting charm type. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1164">[#1164]</a></li>';
+        // if (_compareVersion(installedVersion, '6.0.4')) {
+        //     newfunctions += '<li>[PC actor] Fixed more dark mode problems.</li>'; 
+        //     newfunctions += '<li>[PC actor] Fixed a problem that caused some of the items added by drag and drop could not be removed.</li>';
+        //     newfunctions += '<li>[PC actor] Fixed a viewing problem with shapes that used a fixed value bonus.</li>';
         // }
 
-        // if (_compareVersion(installedVersion, '5.0.1')) {
-        //     newfunctions += '<li>Fixed Graphics on the attributes if you where using the 5th ed rules.</li>';
-        //     newfunctions += '<li>[WtA] Fixed Willpower on the Creature (spirit) sheet if you where using the 5th ed rules.</li>';
-        //     newfunctions += '<li>[WtO] Fixed temporary Vitality on the Orpheus sheet.</li>';
-            
+        // if (_compareVersion(installedVersion, '6.0.2')) {
+        //     newfunctions += '<li>[PC actor] Added so you can give a shape on PC actor a token image, this causes you to be able to shift token image based on what shape the actor has.</li>'; 
+        //     newfunctions += '<li>[PC actor] Fixed dark mode problem on the items ability, advantage and spheres used by PC actor.</li>';
+        //     newfunctions += '<li>[PC actor] Fixed a problem with removing old virtues on PC actors.</li>';
+        //     newfunctions += '<li>[PC actor] Fixed alignment problems PC actor macro meny.</li>';
+        //     newfunctions += '<li>[PC actor] Fixed problem to change actor image on PC actor.</li>';             
+        // }
+
+        // if (_compareVersion(installedVersion, '6.0.1')) {
+        //      newfunctions += '<li>[General] Fixed dark mode problem on message wizard.</li>';
+        //      newfunctions += '<li>[PC actor] Fixed problems to open a newly created PC actor.</li>';
         // }
     }
 
