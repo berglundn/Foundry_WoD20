@@ -592,6 +592,15 @@ export const systemSettings = function() {
 		type: Boolean,
 	});
 
+    game.settings.register("worldofdarkness", "patch700", {
+		name: "patch700",
+		hint: "patch700",
+		scope: "world",
+		config: false,
+		default: false,
+		type: Boolean,
+	});
+
     /* Messages */
     game.settings.register("worldofdarkness", "readmessage01", {
 		name: "Read message01",

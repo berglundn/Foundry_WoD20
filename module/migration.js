@@ -2633,6 +2633,7 @@ export  const updates = async () => {
     let patch420 = false;
     let patch500 = false;
     let patch600 = false;
+    let patch700 = false;
 
     let newfunctions = "";
 
