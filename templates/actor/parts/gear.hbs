@@ -127,6 +127,8 @@
 									{{> "systems/worldofdarkness/templates/actor/parts/list_icons.hbs" showsendchat=true showedit=true showdelete=true showtooltip=true item=item locked=../locked edittitle="wod.labels.edit.fetish" deletetitle="wod.labels.remove.fetish"}}
 								{{else if (eq item.system.type "wod.types.talen")}}
 									{{> "systems/worldofdarkness/templates/actor/parts/list_icons.hbs" showsendchat=true showedit=true showdelete=true showtooltip=true item=item locked=../locked edittitle="wod.labels.edit.talen" deletetitle="wod.labels.remove.talen"}}
+								{{else}}
+									{{> "systems/worldofdarkness/templates/actor/parts/list_icons.hbs" showsendchat=true showedit=true showdelete=true showtooltip=true item=item locked=../locked edittitle="wod.labels.edit.headline" deletetitle="wod.labels.remove.headline"}}
 								{{/if}}
 							</div>																			
 						</div>	
