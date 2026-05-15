@@ -1184,13 +1184,21 @@ export default class DropHelper {
         // if not found look into the world for the Item.
         if (mergedData === undefined) {
             const item = await game.items.find(e => e.uuid === ability.uuid);
-            const loadedData = foundry.utils.duplicate(item);
 
-            if (!loadedData.system.settings.alwaysspeciality) {
-                loadedData.system.settings.alwaysspeciality = (CONFIG.worldofdarkness.alwaysspeciality?.[actor.system.settings.game] ?? []).includes(loadedData.system.id);
+            if (item !== undefined) {
+                const loadedData = foundry.utils.duplicate(item);
+
+                if (!loadedData.system.settings.alwaysspeciality) {
+                    loadedData.system.settings.alwaysspeciality = (CONFIG.worldofdarkness.alwaysspeciality?.[actor.system.settings.game] ?? []).includes(loadedData.system.id);
+                }
+
+                mergedData = await this.PopulateAbility(loadedData, ability);
             }
+        }
 
-            mergedData = await this.PopulateAbility(loadedData, ability);
+        if (item !== undefined) {
+            console.warn(`WoD | Installing Splat | Ability ${ability.name} not found in compendium.`);
+            return false;
         }
 
         // if still not found create a blank new one.

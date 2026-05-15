@@ -2821,6 +2821,11 @@ export  const updates = async () => {
     if (newfunctions == "") {
         newfunctions += 'Issues fixed in version:<br />';        
 
+        if (_compareVersion(installedVersion, '7.1.2')) {
+             newfunctions += '<li>Graphical error with a white backdrop in chat if using dark mode. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1413">[#1413]</a></li>';
+             newfunctions += '<li>[VtM] One skill was not added correctly if using the historic vampire templates. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1414">[#1414]</a></li>';
+        }
+
         if (_compareVersion(installedVersion, '7.1.1')) {
              newfunctions += '<li>Fixed bug causing you not to be able to remove untyped gear. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1411">[#1411]</a></li>';
              newfunctions += '<li>[DtF] Fixed bug causing an Earthbound not to be able to connect their lore powers to lores. <a href="https://github.com/JohanFalt/Foundry_WoD20/issues/1410">[#1410]</a></li>';
