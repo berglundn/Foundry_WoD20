@@ -430,6 +430,20 @@ export const systemSettings = function() {
 		type: Boolean,
 	});
 
+    game.settings.register("worldofdarkness", "changeCombatStyle", {
+		name: game.i18n.localize('wod.settings.combatStyle'),
+		hint: game.i18n.localize('wod.settings.combatStyleHint'),
+		scope: "world",
+		config: false,
+		default: "default",
+		type: String,
+        choices:{
+            default: game.i18n.localize('wod.settings.combatStyleDefault'),
+            withInitiative: game.i18n.localize('wod.settings.combatStyleWithInitiative'),
+            withPhases: game.i18n.localize('wod.settings.combatStyleWithPhases')
+        }
+	});
+
     /**
     * dark mode. Css adjustements are located in the dark-theme.less file.
     */
@@ -750,7 +764,7 @@ export class Rules extends FormApplication {
         if (hasPermission) {
             for (let s of game.settings.settings.values()) {
                 // Exclude settings the user cannot change
-                if ((s.key == "advantageRolls") || (s.key == "specialityLevel") || (s.key == "attributeSettings") || (s.key == "fifthEditionWillpowerSetting") || (s.key == "willpowerBonusDice"))  {
+                if ((s.key == "advantageRolls") || (s.key == "specialityLevel") || (s.key == "attributeSettings") || (s.key == "fifthEditionWillpowerSetting") || (s.key == "willpowerBonusDice") || s.key == "changeCombatStyle")  {
                     // Update setting data
                     const setting = foundry.utils.duplicate(s);
 
