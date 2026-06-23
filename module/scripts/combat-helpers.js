@@ -6,7 +6,7 @@ import { DiceRollContainer } from "./roll-dice.js";
 
 export default class CombatHelper {
 
-    static async RollInitiative(actor) {
+  static async RollInitiative(actor) {
 		const generalRoll = new DiceRollContainer(actor);
         generalRoll.origin = "initiative";
         InitiativeRoll(generalRoll);
@@ -14,7 +14,7 @@ export default class CombatHelper {
 		return;
 	}
 
-    static ignoresPain(actor) {
+  static ignoresPain(actor) {
 		let ignoresPain = false;
 
 		if (actor.system.conditions?.isignoringpain) {
@@ -138,7 +138,7 @@ export default class CombatHelper {
 		return movement;
 	}
 
-    static _inTurn(token) {
+  static _inTurn(token) {
 		for (let count = 0; count < game.combat.combatants.size; count++) {
 			if (token.id == game.combat.combatants.contents[count].token.id) {
 				return true;

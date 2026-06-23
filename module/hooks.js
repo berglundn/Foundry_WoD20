@@ -445,6 +445,21 @@ export function registerHooks(constants, isTablet) {
 		}
 	});
 
+
+// default: game.i18n.localize('wod.settings.combatStyleDefault'),
+// withInitiative: game.i18n.localize('wod.settings.combatStyleWithInitiative'),
+// withPhases: game.i18n.localize('wod.settings.combatStyleWithPhases')
+  /**
+	 * Hook: combatRound
+	 * Triggered when a new round in combat has started.
+	 * Rerolls initiative for all combatants in accordance to the combat style setting (default, reroll each round, or reroll every 3 rounds).
+	 */
+	Hooks.on("combatRound", ()=>{
+		if (game.settings.get('worldofdarkness', 'changeCombatStyle') !== "default") {
+			game.combat.rollInitiative(game.combat.combatants.map(combatant => combatant.id));
+		}
+	})
+
 	/**
 	 * Hook: dragRuler.ready
 	 * Triggered once when the dragRuler module is ready.
